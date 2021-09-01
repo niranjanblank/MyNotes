@@ -5,6 +5,8 @@ const router = express.Router()
 
 router.route('/')
     .post(noteController.createNote)
-    .get(noteController.getNote)
+router.route('/delete/:id')
+    .delete(noteController.deleteNote)
+router.route('/:userID').get(noteController.getNote)
 
 module.exports= router
