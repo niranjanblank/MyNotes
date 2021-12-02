@@ -1,11 +1,11 @@
 ### Simple Project for storing notes
 
-<h3> Login Page </h3>
+Login Page
 ![Login Page](https://github.com/niranjanblank/MyNotes/blob/main/screenshots/login_page.JPG)
 
 
-<h3> Home Page </h3>
+Home Page
 ![Login Page](https://github.com/niranjanblank/MyNotes/blob/main/screenshots/my_notes.JPG)
 
-<h3>Create New Notes Page</h3>
+Create New Notes Page
 ![Create Page](https://github.com/niranjanblank/MyNotes/blob/main/screenshots/create_notes.JPG)
