@@ -127,8 +127,8 @@ const Layout = (props) => {
 
     var background = <Login/>
     if(!loggedIn){
-        background = <Login loginHandler={loginHandler} />
-            
+        background = (
+        <Login loginHandler={loginHandler} />)          
     }
     else{
         background = (

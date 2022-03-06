@@ -34,7 +34,7 @@ const Login = (props) => {
                 component="h2"
                 gutterBottom
                 >
-        Create a New Note </Typography>
+        Login(username: adminUser, password: adminPassword) </Typography>
                 <Box display="flex" justifyContent="center" alignItems="center" flexDirection="column" width="500px">
                 <TextField
                       onChange={usernameHandler}
