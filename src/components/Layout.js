@@ -1,4 +1,4 @@
-import { AppBar, Box, Drawer, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, Box, Drawer, Tab, Tabs, Toolbar, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import { List, ListItem,ListItemIcon, ListItemText } from "@material-ui/core";
 import { AddCircleOutlineOutlined, SubjectOutlined } from "@material-ui/icons";
@@ -55,6 +55,36 @@ const useStyles = makeStyles((theme) => {
     }
 })
 
+
+
+function CustomTabPanel(props) {
+    const { children, value, index, ...other } = props;
+  
+    return (
+      <div
+        role="tabpanel"
+        hidden={value !== index}
+        id={`simple-tabpanel-${index}`}
+        aria-labelledby={`simple-tab-${index}`}
+        {...other}
+      >
+        {value === index && (
+          <Box sx={{ p: 3 }}>
+            <Typography>{children}</Typography>
+          </Box>
+        )}
+      </div>
+    );
+  }
+  
+  function a11yProps(index) {
+    return {
+      id: `simple-tab-${index}`,
+      'aria-controls': `simple-tabpanel-${index}`,
+    };
+  }
+
+
 const Layout = (props) => {
 
     const loggedIn = useSelector(state => state.login.loggedIn)
@@ -63,6 +93,12 @@ const Layout = (props) => {
     const history = useHistory()
     const location = useLocation()
     const classes = useStyles();
+
+    const [value, setValue] = React.useState(0);
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
 
     useEffect(()=> {
         const sendRequest = async () => {
@@ -141,16 +177,24 @@ const Layout = (props) => {
     if(!loggedIn){
         background = (
         <div style={{display:'flex', flexDirection:'column',justifyContent:'center',alignItems:'center',width:'100%',height:'100vh'}}>
-            <Login loginHandler={loginHandler} /> 
-            <Typography 
-                variant="h6"
-                color="textSecondary"
-                component="h2"
-                gutterBottom
-                style={{marginTop:'10px'}}
-                >
-        Or </Typography> 
-            <SignUp signUpHandler={signUpHandler} /> 
+
+        <Box>
+            <Box sx={{ borderBottom: 1, borderColor: 'divider', display:'flex', justifyContent:'center' }}>
+                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+                <Tab label="Login" {...a11yProps(0)} />
+                <Tab label="SignUp" {...a11yProps(1)} />
+                </Tabs>
+            </Box>
+            <CustomTabPanel value={value} index={0}>
+                <Login loginHandler={loginHandler} /> 
+            </CustomTabPanel>
+            <CustomTabPanel value={value} index={1}>
+                <SignUp signUpHandler={signUpHandler} /> 
+            </CustomTabPanel>
+        </Box>
+            
+    
+            
         </div>
            )
     }

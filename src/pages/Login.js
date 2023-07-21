@@ -28,13 +28,7 @@ const Login = (props) => {
     return ( <div className={classesCSS.container} >
 
             <form noValidate autoComplete="off"  >
-            <Typography 
-                variant="h6"
-                color="textSecondary"
-                component="h2"
-                gutterBottom
-                >
-        Login </Typography>
+         
                 <Box display="flex" justifyContent="center" alignItems="center" flexDirection="column" width="500px">
                 <TextField
                       onChange={usernameHandler}
