@@ -77,7 +77,7 @@ npm run start
 ![Login Page](screenshots/login_page.JPG)
 
 7. Register username and password by selecting signup tab
-![Signup Page](screenshots/sign_up_page.JPG)
+![Signup Page](screenshots/sign_up_page.jpg)
 
 8. Login using the username and password from login page
 ![Login Page](screenshots/login_page.JPG)
