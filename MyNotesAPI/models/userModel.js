@@ -24,7 +24,9 @@ userSchema.pre('save', async function(next){
 
 // method to verify password
 userSchema.methods.verifyPassword = async function(candidatePassword, userPassword){
+    console.log("Done")
     return await bcrypt.compare(candidatePassword, userPassword)
+
 }
 
 //Inside mongoose.model, the name must of singular of the collection name in database

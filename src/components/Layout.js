@@ -15,6 +15,7 @@ import { Button } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { useEffect } from "react";
+import SignUp from "../pages/SignUp";
 
 const drawerWidth = 240
 
@@ -116,6 +117,17 @@ const Layout = (props) => {
         }
     }
 
+    const signUpHandler = async (username,password) => {
+        console.log(username,password)
+        let data = await axios.post('http://localhost:5000/signup',{
+            username,password
+        },{
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            withCredentials: true
+          })
+    }
     const logoutHandler = () => {
         console.log('logoutHandler')
         localStorage.removeItem('jwt')
@@ -128,7 +140,19 @@ const Layout = (props) => {
     var background = <Login/>
     if(!loggedIn){
         background = (
-        <Login loginHandler={loginHandler} />)          
+        <div style={{display:'flex', flexDirection:'column',justifyContent:'center',alignItems:'center',width:'100%',height:'100vh'}}>
+            <Login loginHandler={loginHandler} /> 
+            <Typography 
+                variant="h6"
+                color="textSecondary"
+                component="h2"
+                gutterBottom
+                style={{marginTop:'10px'}}
+                >
+        Or </Typography> 
+            <SignUp signUpHandler={signUpHandler} /> 
+        </div>
+           )
     }
     else{
         background = (

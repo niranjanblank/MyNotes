@@ -12,7 +12,7 @@ const useStyles = makeStyles({
     }
   })
 
-const Login = (props) => {
+const SignUp = (props) => {
   const classes = useStyles()
     const [username,setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -34,7 +34,7 @@ const Login = (props) => {
                 component="h2"
                 gutterBottom
                 >
-        Login </Typography>
+        SignUp </Typography>
                 <Box display="flex" justifyContent="center" alignItems="center" flexDirection="column" width="500px">
                 <TextField
                       onChange={usernameHandler}
@@ -56,15 +56,15 @@ const Login = (props) => {
                     required
                     //   error={titleError}
                     />
-                    <Button onClick={()=>props.loginHandler(username,password)}
+                    <Button onClick={()=>props.signUpHandler(username,password)}
                     color="secondary" 
                     variant="contained"
                     fullWidth
-                    >Login</Button>
+                    >SignUp</Button>
                     </Box>
             </form>
         </div>
          );
 }
  
-export default Login;
+export default SignUp;
